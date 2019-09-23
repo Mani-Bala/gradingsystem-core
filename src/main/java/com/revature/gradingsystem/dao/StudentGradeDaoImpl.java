@@ -9,10 +9,11 @@ import java.util.List;
 
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.util.ConnectionUtil;
+import com.revature.gradingsystem.util.MessageConstant;
 import com.revature.gradingsystem.dto.StudentGradeDTO;
 import com.revature.gradingsystem.model.StudentMark;
 
-public class StudentGradeDAO {
+public class StudentGradeDaoImpl {
 
 	public void insertGrade(int regno, List<StudentMark> marks) throws DBException {
 
@@ -39,7 +40,7 @@ public class StudentGradeDAO {
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to update the grade", e);
+			throw new DBException(MessageConstant.UNABLE_TO_INSERT_GRADE, e);
 		} finally {
 			ConnectionUtil.close(con, pst);
 		}
@@ -64,7 +65,7 @@ public class StudentGradeDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to get the records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -95,7 +96,7 @@ public class StudentGradeDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to get the records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -122,7 +123,7 @@ public class StudentGradeDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to get the records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -154,7 +155,7 @@ public class StudentGradeDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to get the records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -186,7 +187,7 @@ public class StudentGradeDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to get the records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}

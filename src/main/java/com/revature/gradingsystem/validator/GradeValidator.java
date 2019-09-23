@@ -1,6 +1,6 @@
 package com.revature.gradingsystem.validator;
 
-import com.revature.gradingsystem.dao.StudentGradeDAO;
+import com.revature.gradingsystem.dao.StudentGradeDaoImpl;
 import com.revature.gradingsystem.dao.ValidatorDao;
 import com.revature.gradingsystem.dao.ValidatorDaoImpl;
 import com.revature.gradingsystem.exception.DBException;
@@ -55,7 +55,7 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 		if (grade == null || "".equals(grade.trim()) || grade.length() != 1) 
 			throw new ValidatorException("Invalid grade, Please try again");
 		
-		StudentGradeDAO studentGrade = new StudentGradeDAO();
+		StudentGradeDaoImpl studentGrade = new StudentGradeDaoImpl();
 		try {
 			String isGradeExist = studentGrade.isGradeExist(grade);
 			

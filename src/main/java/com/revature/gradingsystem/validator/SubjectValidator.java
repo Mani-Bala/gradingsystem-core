@@ -2,7 +2,7 @@ package com.revature.gradingsystem.validator;
 
 import java.util.List;
 
-import com.revature.gradingsystem.dao.SubjectDAO;
+import com.revature.gradingsystem.dao.SubjectDaoImpl;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.exception.ValidatorException;
 import com.revature.gradingsystem.model.Subject;
@@ -16,7 +16,7 @@ public class SubjectValidator {
 		
 		List<Subject> subjectsList = null;
 		try {
-			subjectsList = new SubjectDAO().findAll();
+			subjectsList = new SubjectDaoImpl().findAll();
 		} catch (DBException e) {
 			System.out.println(e.getMessage());
 		}
@@ -31,7 +31,7 @@ public class SubjectValidator {
 
 		List<Subject> subjects = null;
 		try {
-			subjects = new SubjectDAO().findAll();
+			subjects = new SubjectDaoImpl().findAll();
 		} catch (DBException e) {
 			System.out.println(e.getMessage());
 		}

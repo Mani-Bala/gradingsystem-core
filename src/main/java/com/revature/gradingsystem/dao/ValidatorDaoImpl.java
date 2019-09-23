@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.model.ScoreRange;
 import com.revature.gradingsystem.util.ConnectionUtil;
+import com.revature.gradingsystem.util.MessageConstant;
 
 public class ValidatorDaoImpl implements ValidatorDao {
 
@@ -30,7 +31,7 @@ public class ValidatorDaoImpl implements ValidatorDao {
 			}
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to check the grade is presented", e);
+			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
 		} catch (DBException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -87,7 +88,7 @@ public class ValidatorDaoImpl implements ValidatorDao {
 			}
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to check the regno presented", e);
+			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
 		} catch (DBException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -114,7 +115,7 @@ public class ValidatorDaoImpl implements ValidatorDao {
 			}
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to Check its already Updated", e);
+			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
 		} catch (DBException e) {
 			System.out.println(e.getMessage());
 		} finally {

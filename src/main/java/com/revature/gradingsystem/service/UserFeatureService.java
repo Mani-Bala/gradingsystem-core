@@ -2,8 +2,8 @@ package com.revature.gradingsystem.service;
 
 import java.util.List;
 
-import com.revature.gradingsystem.dao.StudentGradeDAO;
-import com.revature.gradingsystem.dao.StudentMarkDAO;
+import com.revature.gradingsystem.dao.StudentGradeDaoImpl;
+import com.revature.gradingsystem.dao.StudentMarkDaoImpl;
 import com.revature.gradingsystem.dto.StudentGradeDTO;
 import com.revature.gradingsystem.dto.StudentMarkDTO;
 import com.revature.gradingsystem.exception.DBException;
@@ -16,8 +16,8 @@ public class UserFeatureService {
 		
 		try {
 			
-			new StudentMarkDAO().insertMarks(regno, marks);
-			new StudentGradeDAO().insertGrade(regno, marks);
+			new StudentMarkDaoImpl().insertMarks(regno, marks);
+			new StudentGradeDaoImpl().insertGrade(regno, marks);
 			
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage());
@@ -28,7 +28,7 @@ public class UserFeatureService {
 
 		List<StudentGradeDTO> list = null;
 		try {
-			list = new StudentGradeDAO().findByGrade(grade);
+			list = new StudentGradeDaoImpl().findByGrade(grade);
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage());
 		}
@@ -39,7 +39,7 @@ public class UserFeatureService {
 
 		List<StudentMarkDTO> list = null;
 		 try {
-			list = new StudentMarkDAO().findBySubjectCode(subCode);
+			list = new StudentMarkDaoImpl().findBySubjectCode(subCode);
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage(), e);
 		}
@@ -51,21 +51,21 @@ public class UserFeatureService {
 		StudentGradeDTO studentDetail =null;
 		
 		try {
-			studentDetail =new StudentGradeDAO().findByRegNo(regno);
+			studentDetail =new StudentGradeDaoImpl().findByRegNo(regno);
 		} catch (DBException e) {
 			System.out.println(e.getMessage());
 		}
 		return studentDetail;
 	}
 
-	public List<StudentMark> getStudentMarks(int regno) {
+	public List<StudentMark> getStudentMarks(int regno) throws ServiceException {
 
 		List<StudentMark> marks = null;
 		
 		try {
-			marks = new StudentMarkDAO().getMarksByRegNo(regno);
+			marks = new StudentMarkDaoImpl().getMarksByRegNo(regno);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		}
 		return marks;
 	}
@@ -75,7 +75,7 @@ public class UserFeatureService {
 		List<StudentGradeDTO> listOfStudent = null;
 		
 		try {
-			listOfStudent = new StudentGradeDAO().listOfStudent();
+			listOfStudent = new StudentGradeDaoImpl().listOfStudent();
 		} catch (DBException e) {
 			throw new ServiceException(e.getMessage());
 		}

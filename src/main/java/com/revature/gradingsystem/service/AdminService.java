@@ -9,6 +9,7 @@ import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.exception.ServiceException;
 import com.revature.gradingsystem.model.ScoreRange;
 import com.revature.gradingsystem.model.UserDetails;
+import com.revature.gradingsystem.util.MessageConstant;
 
 public class AdminService {
 
@@ -20,10 +21,10 @@ public class AdminService {
 		try {
 			userdetail=admindao.findAdminByNamePassword(name, pwd);
 			if (userdetail == null) {
-				throw new ServiceException("Invalid Username and password, Please enter the valid one.");
+				throw new ServiceException(MessageConstant.INVALID_INPUT);
 			}
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		}
 		return userdetail;
 		
@@ -54,14 +55,14 @@ public class AdminService {
 		return list;
 	}
 	
-	public void deleteScoreRangeService() {
+	public void deleteScoreRangeService() throws ServiceException {
 
 		AdminDao admindao = new AdminDaoImpl();
 		
 		try {
 			admindao.deleteScoreRange();
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		}
 	}
 

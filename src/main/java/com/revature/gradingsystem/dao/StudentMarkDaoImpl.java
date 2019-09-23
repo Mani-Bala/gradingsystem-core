@@ -10,9 +10,10 @@ import java.util.List;
 import com.revature.gradingsystem.dto.StudentMarkDTO;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.util.ConnectionUtil;
+import com.revature.gradingsystem.util.MessageConstant;
 import com.revature.gradingsystem.model.StudentMark;
 
-public class StudentMarkDAO {
+public class StudentMarkDaoImpl {
 
 	public void insertMarks(int regno, List<StudentMark> marks) throws DBException {
 
@@ -31,7 +32,7 @@ public class StudentMarkDAO {
 
 				pst.executeUpdate();
 			} catch (SQLException e) {
-				throw new DBException("Unable to Insert the marks", e);
+				throw new DBException(MessageConstant.UNABLE_TO_INSERT_MARK, e);
 			} finally {
 				ConnectionUtil.close(con, pst);
 			}
@@ -63,7 +64,7 @@ public class StudentMarkDAO {
 				list.add(sm);
 			}
 		} catch (SQLException e) {
-			throw new DBException("Unable to get the records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_INSERT_MARK, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -95,7 +96,7 @@ public class StudentMarkDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DBException("Unable to get the records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}

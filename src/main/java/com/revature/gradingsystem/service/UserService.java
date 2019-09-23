@@ -5,6 +5,7 @@ import com.revature.gradingsystem.dao.UserDaoImpl;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.exception.ServiceException;
 import com.revature.gradingsystem.model.UserDetails;
+import com.revature.gradingsystem.util.MessageConstant;
 
 public class UserService {
 
@@ -16,10 +17,10 @@ public class UserService {
 		try {
 			userdetail=userdao.findUserByNamePassword(name, pass);
 			if (userdetail == null) {
-				throw new ServiceException("Invalid Username and password, Please enter the valid one.");
+				throw new ServiceException(MessageConstant.INVALID_INPUT);
 			}
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		}
 		
 		return userdetail;

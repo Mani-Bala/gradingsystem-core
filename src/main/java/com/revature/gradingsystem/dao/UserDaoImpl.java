@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.model.UserDetails;
 import com.revature.gradingsystem.util.ConnectionUtil;
+import com.revature.gradingsystem.util.MessageConstant;
 
 public class UserDaoImpl implements UserDao {
 
@@ -35,7 +36,7 @@ public class UserDaoImpl implements UserDao {
 			}
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to Admin-login", e);
+			throw new DBException(MessageConstant.UNABLE_TO_LOGIN, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}

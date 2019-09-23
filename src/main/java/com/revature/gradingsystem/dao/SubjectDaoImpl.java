@@ -10,8 +10,9 @@ import java.util.List;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.model.Subject;
 import com.revature.gradingsystem.util.ConnectionUtil;
+import com.revature.gradingsystem.util.MessageConstant;
 
-public class SubjectDAO {
+public class SubjectDaoImpl {
 
 	public List<Subject> findAll() throws DBException {
 		Connection con = null;
@@ -31,7 +32,7 @@ public class SubjectDAO {
 
 			}
 		} catch (SQLException e) {
-			throw new DBException("Unable to get the Subject", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_SUBJECTS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}

@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.util.ConnectionUtil;
+import com.revature.gradingsystem.util.MessageConstant;
 import com.revature.gradingsystem.model.ScoreRange;
 import com.revature.gradingsystem.model.UserDetails;
 
@@ -38,7 +39,7 @@ public class AdminDaoImpl implements AdminDao {
 			}
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to Admin-login", e);
+			throw new DBException(MessageConstant.UNABLE_TO_LOGIN, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -115,7 +116,7 @@ public class AdminDaoImpl implements AdminDao {
 			}
 
 		} catch (SQLException e) {
-			throw new DBException("Unable get the Score-Range", e);
+			throw new DBException(MessageConstant.UNABLE_TO_GET_RANGE, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}

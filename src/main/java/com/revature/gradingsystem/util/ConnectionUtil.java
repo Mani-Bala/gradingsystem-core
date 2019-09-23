@@ -24,9 +24,9 @@ public class ConnectionUtil {
 			con = DriverManager.getConnection(url, username, password);
 
 		} catch (ClassNotFoundException e) {
-			throw new DBException("Unable to load the driver class", e);
+			throw new DBException(MessageConstant.DRIVER_CLASS, e);
 		} catch (SQLException e) {
-			throw new DBException("Unable to get DB Connection", e);
+			throw new DBException(MessageConstant.SQL_CONNECTION, e);
 		}
 
 		return con;
@@ -42,7 +42,7 @@ public class ConnectionUtil {
 			if (rs != null)
 				rs.close();
 		} catch (Exception e) {
-			throw new DBException("Unable to close the Connection", e);
+			throw new DBException(MessageConstant.CLOSE_CONNECTION, e);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class ConnectionUtil {
 			if (con != null)
 				con.close();
 		} catch (Exception e) {
-			throw new DBException("Unable to close the Connection", e);
+			throw new DBException(MessageConstant.CLOSE_CONNECTION, e);
 		}
 
 	}
