@@ -20,6 +20,6 @@ using the REQUIRED PARTICULARS from the users.
    * View score range.
 
 I have done these features with web application on first demonstration.
-After completion of 1st Demo, I had spend some hours for Styling web pages and Designing
+I had spend some hours for Styling web pages and Designing, After completion of 1st Demo.
 
 
