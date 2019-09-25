@@ -10,32 +10,32 @@ public class StudentValidator {
 
 	public void isRegnoUpdated(int regno) throws ValidatorException{
 
-		int reg_no = 0;
+		int regNo = 0;
 		String status = "";
 		ValidatorDao validator = new ValidatorDaoImpl();
 		try {
-			reg_no = validator.findRegNo(regno);
+			regNo = validator.findRegNo(regno);
 			status = validator.isMarkUpdated(regno);
 		} catch (DBException e) {
 			throw new ValidatorException(e.getMessage());
 		}	
 		
-		if(regno != reg_no)
+		if(regno != regNo)
 			throw new ValidatorException("Register Number doesn't Exist");
-		if(status == "exist")
+		if(status.equals("exist") )
 			throw new ValidatorException(regno+" already Updated..");
 	}
 	public void isRegnoExistService(int regno) throws ValidatorException{
 
-		int reg_no = 0;
+		int regNo = 0;
 		ValidatorDao validator = new ValidatorDaoImpl();
 		try {
-			reg_no = validator.findRegNo(regno);
+			regNo = validator.findRegNo(regno);
 		} catch (DBException e) {
 			throw new ValidatorException(e.getMessage());
 		}	
 		
-		if(regno != reg_no)
+		if(regno != regNo)
 			throw new ValidatorException("Register Number doesn't Exist");
 		
 	}

@@ -9,7 +9,7 @@ import com.revature.gradingsystem.model.Subject;
 
 public class SubjectValidator {
 
-	public void subjectWiseRankHolder(String subCode) throws ValidatorException {
+	public void subjectWiseRankHolder(String subCode) throws ValidatorException, DBException {
 
 		if (subCode == null || "".equals(subCode.trim()) || subCode.length() != 5)
 			throw new ValidatorException("Invalid Subject Code");
@@ -18,7 +18,7 @@ public class SubjectValidator {
 		try {
 			subjectsList = new SubjectDaoImpl().findAll();
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 		for (Subject subject : subjectsList) {
 			
@@ -27,30 +27,14 @@ public class SubjectValidator {
 		}	
 	}
 
-	public List<Subject> findAllSubject() {
+	public List<Subject> findAllSubject() throws DBException {
 
 		List<Subject> subjects = null;
 		try {
 			subjects = new SubjectDaoImpl().findAll();
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 		return subjects;
 	}
-
-	public int markValidation(String name, String mark) throws ValidatorException {
-
-		int markInt= 0;
-		try {
-			markInt = Integer.parseInt(mark);
-		} catch (Exception e) {
-			throw new ValidatorException("Invalid Mark, Please try again..");
-		}
-		
-		if( markInt > 100 || markInt < 0 )
-			throw new ValidatorException("Mark is out of boundaries, Enter between ( 0-100 ).");
-		
-		return markInt;
-	}
-	
 }

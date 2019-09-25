@@ -15,30 +15,30 @@ public class Logger {
 		return LOGGER;
 	}
 	
-	public static final String level = "";
+	public static final String LEVEL = "";
 	
 	public void debug(String message) {
-		if( level == "DEBUG" )
+		if( LEVEL .equals("DEBUG") )
 			System.out.println(message);
 	}
 	
 	public void error(String message) {
-		if( level == "ERROR" )
+		if( LEVEL.equals("ERROR") )
 			System.out.println(message);
 	}
 	
 	public void error(Exception e) {
-		if( level == "ERROR" )
+		if( LEVEL.equals("ERROR") )
 			System.out.println(e);
 	}
 	
 	public void info(String message) {
-		if( level == "INFO" )
+		if( LEVEL.equals("INFO") )
 			System.out.println(message);
 	}
 	
 	public void print(String message) {
-		if( level == "PRINT" )
+		if( LEVEL.equals("PRINT"))
 			System.out.println(message);
 	}
 }

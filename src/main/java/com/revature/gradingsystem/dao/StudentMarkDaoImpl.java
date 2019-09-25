@@ -95,7 +95,6 @@ public class StudentMarkDaoImpl {
 				list.add(mark);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);

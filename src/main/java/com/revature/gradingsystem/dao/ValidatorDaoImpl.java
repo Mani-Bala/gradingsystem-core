@@ -33,7 +33,7 @@ public class ValidatorDaoImpl implements ValidatorDao {
 		} catch (SQLException e) {
 			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -62,7 +62,7 @@ public class ValidatorDaoImpl implements ValidatorDao {
 		} catch (SQLException e) {
 			throw new DBException("Unable to find", e);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -90,7 +90,7 @@ public class ValidatorDaoImpl implements ValidatorDao {
 		} catch (SQLException e) {
 			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}
@@ -117,7 +117,7 @@ public class ValidatorDaoImpl implements ValidatorDao {
 		} catch (SQLException e) {
 			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
 		}

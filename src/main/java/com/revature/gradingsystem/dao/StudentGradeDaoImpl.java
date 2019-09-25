@@ -14,6 +14,7 @@ import com.revature.gradingsystem.dto.StudentGradeDTO;
 import com.revature.gradingsystem.model.StudentMark;
 
 public class StudentGradeDaoImpl {
+	final String AVERAGE = "average";
 
 	public void insertGrade(int regno, List<StudentMark> marks) throws DBException {
 
@@ -64,7 +65,6 @@ public class StudentGradeDaoImpl {
 				grade = rs.getString("grade");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
@@ -89,13 +89,12 @@ public class StudentGradeDaoImpl {
 				StudentGradeDTO sg = new StudentGradeDTO();
 				sg.setRegNo(rs.getInt("reg_no"));
 				sg.setStudentName(rs.getString("student_name"));
-				sg.setAvg(rs.getInt("average"));
+				sg.setAvg(rs.getInt(AVERAGE));
 				sg.setGrade(rs.getString("grade"));
 
 				list.add(sg);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
@@ -122,7 +121,6 @@ public class StudentGradeDaoImpl {
 				grade = rs.getString("grade");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
@@ -149,12 +147,11 @@ public class StudentGradeDaoImpl {
 				stud = new StudentGradeDTO();
 				stud.setStudentName(rs.getString("student_name"));
 				stud.setRegNo(rs.getInt("reg_no"));
-				stud.setAvg(rs.getFloat("average"));
+				stud.setAvg(rs.getFloat(AVERAGE));
 				stud.setGrade(rs.getString("grade"));
 
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);
@@ -180,13 +177,12 @@ public class StudentGradeDaoImpl {
 				StudentGradeDTO studGrade = new StudentGradeDTO();
 				studGrade.setStudentName(rs.getString("student_name"));
 				studGrade.setRegNo(rs.getInt("reg_no"));
-				studGrade.setAvg(rs.getFloat("average"));
+				studGrade.setAvg(rs.getFloat(AVERAGE));
 				studGrade.setGrade(rs.getString("grade"));
 
 				stud.add(studGrade);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException(MessageConstant.UNABLE_TO_GET_RECORDS, e);
 		} finally {
 			ConnectionUtil.close(con, pst, rs);

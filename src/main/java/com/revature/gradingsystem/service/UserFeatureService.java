@@ -46,14 +46,14 @@ public class UserFeatureService {
 		return list;
 	}
 
-	public StudentGradeDTO getStudentResult(int regno) {
+	public StudentGradeDTO getStudentResult(int regno) throws DBException {
 
 		StudentGradeDTO studentDetail =null;
 		
 		try {
 			studentDetail =new StudentGradeDaoImpl().findByRegNo(regno);
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 		return studentDetail;
 	}

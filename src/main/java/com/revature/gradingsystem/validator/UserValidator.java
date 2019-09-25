@@ -5,7 +5,7 @@ import com.revature.gradingsystem.exception.ValidatorException;
 public class UserValidator {
 
 	
-	public void Login(String name, String password) throws ValidatorException {
+	public void userInput(String name, String password) throws ValidatorException {
 
 		if (name == null || "".equals(name.trim())) {
 			throw new ValidatorException("Invalid Name");

@@ -9,19 +9,20 @@ import java.sql.SQLException;
 import com.revature.gradingsystem.exception.DBException;
 
 public class ConnectionUtil {
+	
 
-	private static final String driverClassName = "com.mysql.jdbc.Driver";
-	private static final String url = "jdbc:mysql://trainingdb.ck1ayq0lncmp.ap-south-1.rds.amazonaws.com:3306/manikandan_db";
-	private static final String username = "manikandan";
-	private static final String password = "manikandan";
+	private static final String DRIVERCLASSNAME = "com.mysql.jdbc.Driver";
+	private static final String URL = "jdbc:mysql://trainingdb.ck1ayq0lncmp.ap-south-1.rds.amazonaws.com:3306/manikandan_db";
+	private static final String USERNAME = "manikandan";
+	private static final String PASSWORD = "manikandan";
 
 	public static Connection getConnection() throws DBException {
 
 		Connection con = null;
 
 		try {
-			Class.forName(driverClassName);
-			con = DriverManager.getConnection(url, username, password);
+			Class.forName(DRIVERCLASSNAME);
+			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
 		} catch (ClassNotFoundException e) {
 			throw new DBException(MessageConstant.DRIVER_CLASS, e);

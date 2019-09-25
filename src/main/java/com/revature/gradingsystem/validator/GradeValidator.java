@@ -11,7 +11,7 @@ public class GradeValidator {
 	
 	ValidatorDao validatordao= new ValidatorDaoImpl();
 
-public void isGradeExist(String grade, int min, int max) throws ValidatorException {
+public void isGradeExist(String grade, int min, int max) throws ValidatorException, DBException {
 		
 		if (grade == null || "".equals(grade.trim()) || grade.length() != 1) 
 			throw new ValidatorException("Invalid grade, Please try again");
@@ -22,7 +22,7 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 			if(scorerange != null)
 				throw new ValidatorException("Grade already Exist, Please try another.");
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 		
 		
@@ -37,7 +37,7 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 			if(scorerange1 != null)
 				throw new ValidatorException("Min_mark already updated, Please try another.");
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 	
 		
@@ -46,11 +46,11 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 			if(scorerange2 != null)
 				throw new ValidatorException("Max_mark already updated, Please try another.");
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 	}
 
-	public void gradeCheck(String grade) throws ValidatorException {
+	public void gradeCheck(String grade) throws ValidatorException, DBException {
 
 		if (grade == null || "".equals(grade.trim()) || grade.length() != 1) 
 			throw new ValidatorException("Invalid grade, Please try again");
@@ -59,10 +59,10 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 		try {
 			String isGradeExist = studentGrade.isGradeExist(grade);
 			
-			if(isGradeExist == "")
+			if( "".equals(isGradeExist) )
 				throw new ValidatorException("This grade is out of Range");
 		} catch (DBException e) {
-			System.out.println(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 	}
 	
