@@ -35,9 +35,9 @@ public class UserFeatureService {
 		return list;
 	}
 
-	public List<StudentMarkDTO> findBySubjectCodeService(String subCode) throws ServiceException {
+	public List<StudentMark> findBySubjectCodeService(String subCode) throws ServiceException {
 
-		List<StudentMarkDTO> list = null;
+		List<StudentMark> list = null;
 		 try {
 			list = new StudentMarkDaoImpl().findBySubjectCode(subCode);
 		} catch (DBException e) {

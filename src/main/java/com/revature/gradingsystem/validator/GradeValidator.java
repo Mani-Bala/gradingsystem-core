@@ -60,7 +60,7 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 			String isGradeExist = studentGrade.isGradeExist(grade);
 			
 			if( "".equals(isGradeExist) )
-				throw new ValidatorException("This grade is out of Range");
+				throw new ValidatorException("Invalid Grade..");
 		} catch (DBException e) {
 			throw new DBException(e.getMessage());
 		}

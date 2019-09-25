@@ -11,7 +11,9 @@ import com.revature.gradingsystem.dto.StudentMarkDTO;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.util.ConnectionUtil;
 import com.revature.gradingsystem.util.MessageConstant;
+import com.revature.gradingsystem.model.StudentDetail;
 import com.revature.gradingsystem.model.StudentMark;
+import com.revature.gradingsystem.model.Subject;
 
 public class StudentMarkDaoImpl {
 
@@ -39,27 +41,34 @@ public class StudentMarkDaoImpl {
 		}
 	}
 
-	public List<StudentMarkDTO> findBySubjectCode(String subjectCode) throws DBException {
+	public List<StudentMark> findBySubjectCode(String subjectCode) throws DBException {
 		Connection con = null;
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		List<StudentMarkDTO> list = null;
+		List<StudentMark> list = null;
 		try {
 			con = ConnectionUtil.getConnection();
-			String sql = "select sd.reg_no, sd.student_name, sm.marks, sg.grade from  student_details sd, student_marks sm,"
-					+ " subject s, student_grade sg where sd.reg_no = sm.reg_no and sm.subject_code = s.sub_code and"
-					+ " sm.reg_no = sg.reg_no and subject_code = ? order by marks desc";
+			String sql = "select sd.reg_no, sd.student_name, sm.marks, s.subject_name from  student_details sd,"
+					+ " student_marks sm, subject s where sd.reg_no = sm.reg_no and sm.subject_code = s.sub_code"
+					+ " and subject_code = ? order by marks desc;";
 			pst = con.prepareStatement(sql);
 			pst.setString(1, subjectCode);
 
 			rs = pst.executeQuery();
-			list = new ArrayList<StudentMarkDTO>();
+			list = new ArrayList<StudentMark>();
 			while (rs.next()) {
-				StudentMarkDTO sm = new StudentMarkDTO();
-				sm.setRegNo(rs.getInt("reg_no"));
-				sm.setStudentName(rs.getString("student_name"));
+				StudentMark sm = new StudentMark();
+
+				StudentDetail sd = new StudentDetail();
+				sd.setRegNo(rs.getInt("reg_no"));
+				sd.setStudentName(rs.getString("student_name"));
+				sm.setStudentDetail(sd);
+				
 				sm.setMark(rs.getInt("marks"));
-				sm.setGrade(rs.getString("grade"));
+				
+				Subject sub = new Subject();
+				sub.setName(rs.getString("subject_name"));
+				sm.setSubject(sub);
 
 				list.add(sm);
 			}
@@ -89,7 +98,9 @@ public class StudentMarkDaoImpl {
 			list = new ArrayList<StudentMark>();
 			while (rs.next()) {
 				StudentMark mark = new StudentMark();
-				mark.setSubjectName(rs.getString("subject_code"));
+				Subject subject = new Subject();
+				subject.setCode(rs.getString("subject_code"));
+				mark.setSubject(subject);
 				mark.setMark(rs.getInt("marks"));
 
 				list.add(mark);

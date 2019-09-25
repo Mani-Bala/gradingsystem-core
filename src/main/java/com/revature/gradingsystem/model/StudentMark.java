@@ -8,8 +8,6 @@ public class StudentMark {
 	
 	private StudentDetail studentDetail;
 
-	private String subjectName;
-	
 	private Subject subject;
 	
 	private Integer mark;
@@ -32,12 +30,6 @@ public class StudentMark {
 		this.subject = subject;
 	}
 
-	@Override
-	public String toString() {
-		return "StudentMark [id=" + id + ", studentDetail=" + studentDetail + ", subjectName=" + subjectName + ", mark="
-				+ mark + "]";
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -52,14 +44,6 @@ public class StudentMark {
 
 	public void setStudentDetail(StudentDetail studentDetail) {
 		this.studentDetail = studentDetail;
-	}
-
-	public String getSubjectName() {
-		return subjectName;
-	}
-
-	public void setSubjectName(String subjectName) {
-		this.subjectName = subjectName;
 	}
 
 	public Integer getMark() {
