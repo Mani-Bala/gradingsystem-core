@@ -1,6 +1,5 @@
 package com.revature.gradingsystem.model;
 
-import com.revature.gradingsystem.dto.MarkDTO;
 import com.revature.gradingsystem.dto.StudentGradeDTO;
 
 public class StudentMark {
@@ -17,15 +16,6 @@ public class StudentMark {
 	
 	private StudentGradeDTO studentGradeDTO;
 	
-	private MarkDTO markDTO;
-	
-	public MarkDTO getMarkDTO() {
-		return markDTO;
-	}
-	public void setMarkDTO(MarkDTO markDTO) {
-		this.markDTO = markDTO;
-	}
-
 	public StudentGradeDTO getStudentGradeDTO() {
 		return studentGradeDTO;
 	}
