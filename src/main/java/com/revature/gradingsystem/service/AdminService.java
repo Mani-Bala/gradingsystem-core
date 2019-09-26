@@ -55,14 +55,14 @@ public class AdminService {
 		return list;
 	}
 	
-	public void deleteScoreRangeService() throws ServiceException {
+	public void deleteScoreRangeService() throws DBException {
 
 		AdminDao admindao = new AdminDaoImpl();
 		
 		try {
 			admindao.deleteScoreRange();
 		} catch (DBException e) {
-			throw new ServiceException(e.getMessage());
+			throw new DBException(e.getMessage());
 		}
 	}
 

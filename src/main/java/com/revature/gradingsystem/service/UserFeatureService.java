@@ -5,7 +5,6 @@ import java.util.List;
 import com.revature.gradingsystem.dao.StudentGradeDaoImpl;
 import com.revature.gradingsystem.dao.StudentMarkDaoImpl;
 import com.revature.gradingsystem.dto.StudentGradeDTO;
-import com.revature.gradingsystem.dto.StudentMarkDTO;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.exception.ServiceException;
 import com.revature.gradingsystem.model.StudentMark;

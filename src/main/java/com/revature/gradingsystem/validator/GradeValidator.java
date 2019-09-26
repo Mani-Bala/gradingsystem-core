@@ -29,13 +29,13 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 		if( min > 100 || min < 0 || max > 100 || max < 0)
 			throw new ValidatorException("Out of boundaries, Please enter the valid Range.");
 		else if(min > max)
-			throw new ValidatorException("Min_Rang is Greater than Max_Range, Please enter the valid Range.");
+			throw new ValidatorException("Minimum Range is Greater than Maximum Range, Please enter the valid Range.");
 		
 		
 		try {
 			ScoreRange scorerange1 = validatordao.findRange(min);
 			if(scorerange1 != null)
-				throw new ValidatorException("Min_mark already updated, Please try another.");
+				throw new ValidatorException("Minimum mark already updated, Please try another.");
 		} catch (DBException e) {
 			throw new DBException(e.getMessage());
 		}
@@ -44,7 +44,7 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 		try {
 			ScoreRange scorerange2 = validatordao.findRange(min);
 			if(scorerange2 != null)
-				throw new ValidatorException("Max_mark already updated, Please try another.");
+				throw new ValidatorException("Maximum mark already updated, Please try another.");
 		} catch (DBException e) {
 			throw new DBException(e.getMessage());
 		}
