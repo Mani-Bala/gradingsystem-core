@@ -5,7 +5,7 @@ public interface MessageConstant {
 	//ConnectionUtil Messages
 	public static final String DRIVER_CLASS = "Unable to load the driver class";
 	
-	public static final String SQL_CONNECTION = "Unable to get DB Connection";
+	public static final String SQL_CONNECTION = "Unable to get Connection";
 
 	public static final String CLOSE_CONNECTION = "Unable to close the Connection";
 	
@@ -22,10 +22,10 @@ public interface MessageConstant {
 	public static final String UNABLE_TO_GET_RECORDS = "Unable to get the records";
 	
 	//StudentGradeDao
-	public static final String UNABLE_TO_INSERT_GRADE = "Unable to Insert the grade";
+	public static final String UNABLE_TO_INSERT_GRADE = "Unable to update the grade";
 	
 	//StudentMarkDao
-	public static final String UNABLE_TO_INSERT_MARK ="Unable to Insert the marks";
+	public static final String UNABLE_TO_INSERT_MARK ="Unable to update the marks";
 	
 	//SubjectDao 
 	public static final String UNABLE_TO_GET_SUBJECTS = "Unable to get the Subject";
