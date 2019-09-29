@@ -6,7 +6,7 @@ using the REQUIRED PARTICULARS from the users.
 
 ### Application Features Done (v1.0.1)
 
-  #### 1. Login ( Admin, User ).
+  #### 1. Login ( Admin, User )
   #### 2. Admin Features
    * Admin can Define the score range.
    * Delete the score range.
