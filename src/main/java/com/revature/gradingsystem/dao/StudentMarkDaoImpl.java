@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.gradingsystem.dto.StudentMarkDTO;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.util.ConnectionUtil;
 import com.revature.gradingsystem.util.MessageConstant;

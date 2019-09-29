@@ -62,7 +62,7 @@ public class AdminDaoImpl implements AdminDao {
 			rows = pst.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to update Score-Range", e);
+			throw new DBException(MessageConstant.UNABLE_TO_UPDATE_SCORE, e);
 		} finally {
 			ConnectionUtil.close(con, pst);
 		}
@@ -82,7 +82,7 @@ public class AdminDaoImpl implements AdminDao {
 			rows = pst.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new DBException("Unable to delete the Score-Range Records", e);
+			throw new DBException(MessageConstant.UNABLE_TO_DELETE_SCORE, e);
 		} finally {
 			ConnectionUtil.close(con, pst);
 		}

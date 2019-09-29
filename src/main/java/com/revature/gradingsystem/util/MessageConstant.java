@@ -30,4 +30,9 @@ public interface MessageConstant {
 	//SubjectDao 
 	public static final String UNABLE_TO_GET_SUBJECTS = "Unable to get the Subject";
 	
+	//AdminDao
+	public static final String UNABLE_TO_UPDATE_SCORE = "Unable to update Score-Range";
+	
+	public static final String UNABLE_TO_DELETE_SCORE = "Unable to delete the Score-Range";
+	
 }
