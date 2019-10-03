@@ -6,12 +6,12 @@ using the REQUIRED PARTICULARS from the users.
 
 ### Application Features Done (v1.0.1)
 
-  #### 1. Login ( Admin, User )
-  #### 2. Admin Features
+  #### 1. Login ( Admin, User ).
+  #### 2. Admin Features.
    * Admin can Define the score range.
    * Delete the score range.
    * View score range.
-  #### 3. User Features
+  #### 3. User Features.
    * check the student Result.
    * Update Student Marks.
    * List of Student based on Grading (Top-Bottom).
