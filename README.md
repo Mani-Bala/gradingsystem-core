@@ -1,4 +1,4 @@
-# Grading System - Core 
+# Grading System - Core  
 
 ### Synopsis
 The system presented is used to arrange, sort, change and view the various grades of students
