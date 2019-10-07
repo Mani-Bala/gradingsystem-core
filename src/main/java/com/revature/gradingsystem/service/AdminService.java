@@ -1,15 +1,18 @@
 package com.revature.gradingsystem.service;
 
 import com.revature.gradingsystem.dao.AdminDaoImpl;
+import com.revature.gradingsystem.dao.EmployeeDaoImpl;
 
 import java.util.List;
 
 import com.revature.gradingsystem.dao.AdminDao;
 import com.revature.gradingsystem.exception.DBException;
 import com.revature.gradingsystem.exception.ServiceException;
+import com.revature.gradingsystem.exception.ValidatorException;
 import com.revature.gradingsystem.model.ScoreRange;
 import com.revature.gradingsystem.model.UserDetails;
 import com.revature.gradingsystem.util.MessageConstant;
+import com.revature.gradingsystem.validator.EmployeeValidator;
 
 public class AdminService {
 
@@ -63,6 +66,21 @@ public class AdminService {
 			admindao.deleteScoreRange();
 		} catch (DBException e) {
 			throw new DBException(e.getMessage());
+		}
+	}
+	
+	public void addEmployeeService(UserDetails user) throws ServiceException {
+
+		EmployeeDaoImpl employeeDao = new EmployeeDaoImpl();
+		EmployeeValidator employeeValidator = new EmployeeValidator();
+		try {
+			employeeValidator.addedEmployeeValidation(user);
+			employeeDao.addEmployee(user);
+			
+		} catch (DBException e) {
+			throw new ServiceException(e.getMessage());
+		}catch (ValidatorException e) {
+			throw new ServiceException(e.getMessage());
 		}
 	}
 

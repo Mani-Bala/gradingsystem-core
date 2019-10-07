@@ -14,4 +14,8 @@ public interface ValidatorDao {
 
 	String isMarkUpdated(int regno) throws DBException;
 
+	String findByEmail(String email) throws DBException;
+
+	String findByMobNo(long mobno) throws DBException;
+
 }

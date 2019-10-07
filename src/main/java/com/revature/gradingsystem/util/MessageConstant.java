@@ -35,4 +35,8 @@ public interface MessageConstant {
 	
 	public static final String UNABLE_TO_DELETE_SCORE = "Unable to delete the Score-Range";
 	
+	//Employee Dao
+	public static final String UNABLE_TO_ADD = "Unable to add employee detail";
+	
+	public static final String UNABLE_TO_UPDATE = "Unable to update employee detail";
 }

@@ -124,4 +124,58 @@ public class ValidatorDaoImpl implements ValidatorDao {
 		return status;
 	}
 
+	public String findByEmail(String email) throws DBException {
+
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String status = "notexist";
+		try {
+			con = ConnectionUtil.getConnection();
+			String sql = "select email from app_users where email = ?";
+			pst = con.prepareStatement(sql);
+			pst.setString(1, email);
+			rs = pst.executeQuery();
+
+			if (rs.next()) {
+				status = "exist";
+			}
+
+		} catch (SQLException e) {
+			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
+		} catch (DBException e) {
+			throw new DBException(e.getMessage());
+		} finally {
+			ConnectionUtil.close(con, pst, rs);
+		}
+		return status;
+	}
+
+	public String findByMobNo(long mobno) throws DBException {
+
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		String status = "notexist";
+		try {
+			con = ConnectionUtil.getConnection();
+			String sql = "select mob_no from app_users where mob_no = ?";
+			pst = con.prepareStatement(sql);
+			pst.setLong(1, mobno);
+			rs = pst.executeQuery();
+
+			if (rs.next()) {
+				status = "exist";
+			}
+
+		} catch (SQLException e) {
+			throw new DBException(MessageConstant.UNABLE_TO_CHECK, e);
+		} catch (DBException e) {
+			throw new DBException(e.getMessage());
+		} finally {
+			ConnectionUtil.close(con, pst, rs);
+		}
+		return status;
+	}
+
 }

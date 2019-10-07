@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 
 		try {
 			con = ConnectionUtil.getConnection();
-			String sql = "select name, mob_no, role from app_users where name = ? and password = ? and role = 'T'";
+			String sql = "select name, email, mob_no, role, subject from app_users where name = ? and password = ? and role = 'T'";
 			pst = con.prepareStatement(sql);
 			pst.setString(1, name);
 			pst.setString(2, pass);
@@ -31,8 +31,10 @@ public class UserDaoImpl implements UserDao {
 				userdetail = new UserDetails();
 
 				userdetail.setName(rs.getString("name"));
+				userdetail.setEmail(rs.getString("email"));
 				userdetail.setMobno(rs.getLong("mob_no"));
 				userdetail.setRole(rs.getString("role"));
+				userdetail.setSubject(rs.getString("subject"));
 			}
 
 		} catch (SQLException e) {

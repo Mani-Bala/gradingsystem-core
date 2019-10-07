@@ -11,7 +11,7 @@ public class GradeValidator {
 	
 	ValidatorDao validatordao= new ValidatorDaoImpl();
 
-public void isGradeExist(String grade, int min, int max) throws ValidatorException, DBException {
+public void isGradeExist(String grade, int min, int max) throws ValidatorException{
 		
 		if (grade == null || "".equals(grade.trim()) || grade.length() != 1) 
 			throw new ValidatorException("Invalid grade, Please try again");
@@ -20,9 +20,9 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 		try {
 			ScoreRange scorerange = validatordao.findGrade(grade);
 			if(scorerange != null)
-				throw new ValidatorException("Grade already Exist, Please try another.");
+				throw new ValidatorException("This Grade already updated, Please try another.");
 		} catch (DBException e) {
-			throw new DBException(e.getMessage());
+			throw new ValidatorException(e.getMessage());
 		}
 		
 		
@@ -35,18 +35,18 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 		try {
 			ScoreRange scorerange1 = validatordao.findRange(min);
 			if(scorerange1 != null)
-				throw new ValidatorException("Minimum mark already updated, Please try another.");
+				throw new ValidatorException("Minimum range already updated, Please try another.");
 		} catch (DBException e) {
-			throw new DBException(e.getMessage());
+			throw new ValidatorException(e.getMessage());
 		}
 	
 		
 		try {
-			ScoreRange scorerange2 = validatordao.findRange(min);
+			ScoreRange scorerange2 = validatordao.findRange(max);
 			if(scorerange2 != null)
-				throw new ValidatorException("Maximum mark already updated, Please try another.");
+				throw new ValidatorException("Maximum range already updated, Please try another.");
 		} catch (DBException e) {
-			throw new DBException(e.getMessage());
+			throw new ValidatorException(e.getMessage());
 		}
 	}
 
@@ -62,7 +62,7 @@ public void isGradeExist(String grade, int min, int max) throws ValidatorExcepti
 			if( "".equals(isGradeExist) )
 				throw new ValidatorException("Invalid Grade..");
 		} catch (DBException e) {
-			throw new DBException(e.getMessage());
+			throw new ValidatorException(e.getMessage());
 		}
 	}
 	
